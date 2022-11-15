@@ -1,7 +1,5 @@
 package distanceBetweenToPointsOnMap;
 
-import distanceBetweenToPointsOnMap.apachePOI.WritingExcel;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -39,20 +37,10 @@ public class MainEntryPoint {
             finalData.add(calculatedData.get(minElementIndex));
         }
 
-//        DistanceData[] arr = new DistanceData[10];
-//        System.out.println(actual.size());
-//        for (int i = 0; i < actual.size(); i++) {
-//            String potentialOfficesAddress = actual.get(i).Address;
-//
-//            finalData = (ArrayList<DistanceData>) calculatedData.stream().
-//                    filter(a -> a.Actual.Address.equals(potentialOfficesAddress)).sorted().collect(Collectors.toList());
-//        }
-
-
         Object[][] dataForWrite = convertTo2DArray(finalData);
 
         try {
-            WritingExcel.excelWriter(dataForWrite, "C:/Users/À/Desktop/ExcelForPOI/Results.xlsx");
+            ExcelWriter.writer(dataForWrite, "C:/Users/À/Desktop/ExcelForPOI/Results.xlsx");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
